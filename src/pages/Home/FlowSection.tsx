@@ -103,7 +103,7 @@ const crimeSafetyProject = {
     "Vercel", "GitHub"
   ],
   boxImage: "/projects/crime-safety-bg.png",      
-  mobileImage: "/projects/project 1.jpeg" 
+  mobileImage: "/projects/project1.jpeg" 
 };
 
 // ========== SECTION 2 - PROJECT ==========
@@ -120,7 +120,7 @@ const secondProject = {
   githubUrl: "https://github.com/yourusername/portfolio",
   techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "GSAP", "Three.js", "Vercel"],
   boxImage: "/projects/portfolio.png",             
-  mobileImage: "/projects/project 2.png"    
+  mobileImage: "/projects/project2.png"    
 };
 
 // ========== SECTION 3 - project ==========
@@ -137,7 +137,7 @@ const thirdProject = {
   githubUrl: "https://github.com/DivyangUGitHub/Ryzz",
   techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Socket.io", "Prisma", "PostgreSQL"],
   boxImage: "/projects/opengraph.jpg",              
-  mobileImage: "/projects/project 3.jpeg"         
+  mobileImage: "/projects/project3.jpeg"         
 };
 
 // ========== SECTION 4 - project ==========
@@ -153,8 +153,8 @@ const fourthProject = {
   liveUrl: "https://divyang-portfolio.vercel.app",
   githubUrl: "https://github.com/DivyangUGitHub/Self-Improving-RAG-System",
   techStack: ["Python", "LangChain", "MongoDB","TailwindCSS", "Vercel"],
-  boxImage: "/projects/project 4.png",           
-  mobileImage: "/projects/project -4.png"           
+  boxImage: "/projects/project4.png",           
+  mobileImage: "/projects/project-4.png"           
 };
 
 export default function Home() {
