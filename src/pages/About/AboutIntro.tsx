@@ -1,21 +1,19 @@
-import React, {
+
+"use client";
+
+import Timeline from "./Timeline";
+
+import {
   useEffect,
   useState,
 } from "react";
 
-import {
-  motion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion } from "framer-motion";
 
 import {
   Github,
   Linkedin,
   Twitter,
-  ArrowRight,
-  MapPin,
-  Briefcase,
 } from "lucide-react";
 
 const images = [
@@ -33,22 +31,14 @@ const AboutSection = () => {
     const interval = setInterval(() => {
       setActiveIndex(
         (prev) =>
-          (prev + 1) % images.length
+          (prev + 1) %
+          images.length
       );
     }, 2000);
 
     return () =>
       clearInterval(interval);
   }, []);
-
-  const { scrollYProgress } =
-    useScroll();
-
-  const lineHeight = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0%", "100%"]
-  );
 
   const getImage = (
     index: number
@@ -76,7 +66,7 @@ const AboutSection = () => {
         py-24
       "
     >
-      {/* BACKGROUND GLOW */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0 overflow-hidden">
         <div
           className="
@@ -138,7 +128,6 @@ const AboutSection = () => {
           min-h-screen
         "
       >
-        {/* BIG TITLE */}
         <motion.h1
           initial={{
             opacity: 0,
@@ -150,7 +139,6 @@ const AboutSection = () => {
           }}
           transition={{
             duration: 1,
-            ease: [0.22, 1, 0.36, 1],
           }}
           viewport={{
             once: true,
@@ -177,7 +165,6 @@ const AboutSection = () => {
           ABOUT ME
         </motion.h1>
 
-        {/* SUBTEXT */}
         <motion.p
           initial={{
             opacity: 0,
@@ -209,7 +196,6 @@ const AboutSection = () => {
           GET TO KNOW MORE ABOUT
         </motion.p>
 
-        {/* ITALIC */}
         <motion.h2
           initial={{
             opacity: 0,
@@ -269,7 +255,7 @@ const AboutSection = () => {
           items-center
         "
       >
-        {/* LEFT SIDE */}
+        {/* LEFT */}
         <motion.div
           initial={{
             opacity: 0,
@@ -292,13 +278,9 @@ const AboutSection = () => {
           <p
             className="
               uppercase
-
               tracking-[6px]
-
               text-zinc-500
-
               text-xs
-
               mb-8
             "
           >
@@ -366,16 +348,15 @@ const AboutSection = () => {
                   to-pink-500
                 "
                 style={{
-                 fontFamily: 
-                 "'Quintessential', serif",
-                  }}
+                  fontFamily:
+                    "'Quintessential', serif",
+                }}
               >
                 Divyang Upreti
               </motion.span>
             </span>
           </h1>
 
-          {/* PARA */}
           <div
             className="
               mt-10
@@ -393,26 +374,24 @@ const AboutSection = () => {
             "
           >
             <p>
-              I transform complex ideas into
-              high-speed, scalable web products.
-              As an engineering-driven developer,
-              I focus on the entire stack —
-              prioritizing clean architecture,
-              seamless performance, and modern
-              solutions that drive real value.
+              I transform complex
+              ideas into high-speed,
+              scalable web products.
             </p>
 
             <p>
-              Beyond writing code, I build
-              immersive experiences, AI systems,
-              and futuristic digital products
-              that blend design with development.
+              Beyond writing code,
+              I build immersive
+              experiences, AI systems,
+              and futuristic digital
+              products.
             </p>
 
             <p>
               My philosophy is simple:
-              build things that feel premium,
-              interactive, modern, and unforgettable.
+              build things that feel
+              premium, interactive,
+              modern, and unforgettable.
             </p>
           </div>
 
@@ -427,7 +406,7 @@ const AboutSection = () => {
             "
           >
             <a
-              href="#"
+              href="https://www.linkedin.com/in/divyang-upreti/"
               className="
                 text-zinc-500
                 hover:text-white
@@ -439,7 +418,7 @@ const AboutSection = () => {
             </a>
 
             <a
-              href="#"
+              href="https://github.com/DivyangUGitHub"
               className="
                 text-zinc-500
                 hover:text-white
@@ -451,7 +430,7 @@ const AboutSection = () => {
             </a>
 
             <a
-              href="#"
+              href="https://x.com/Divyang_Upreti_"
               className="
                 text-zinc-500
                 hover:text-white
@@ -462,49 +441,9 @@ const AboutSection = () => {
               <Twitter size={20} />
             </a>
           </div>
-
-          {/* BUTTON */}
-          <motion.button
-            whileHover={{
-              scale: 1.05,
-            }}
-            whileTap={{
-              scale: 0.95,
-            }}
-            className="
-              flex
-              items-center
-              gap-4
-
-              mt-14
-
-              text-white
-              font-semibold
-            "
-          >
-            Dive in deeper
-
-            <div
-              className="
-                w-10
-                h-10
-
-                rounded-full
-
-                border
-                border-white/10
-
-                flex
-                items-center
-                justify-center
-              "
-            >
-              <ArrowRight size={16} />
-            </div>
-          </motion.button>
         </motion.div>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT */}
         <div
           className="
             relative
@@ -517,7 +456,7 @@ const AboutSection = () => {
             overflow-hidden
           "
         >
-          {/* LEFT PREVIEW */}
+          {/* LEFT */}
           <motion.img
             key={getImage(0)}
             src={getImage(0)}
@@ -544,7 +483,7 @@ const AboutSection = () => {
             "
           />
 
-          {/* MAIN IMAGE */}
+          {/* MAIN */}
           <motion.div
             key={getImage(1)}
             initial={{
@@ -560,7 +499,6 @@ const AboutSection = () => {
             }}
             transition={{
               duration: 1.2,
-              ease: [0.22, 1, 0.36, 1],
             }}
             className="
               relative
@@ -570,10 +508,6 @@ const AboutSection = () => {
             <motion.img
               whileHover={{
                 scale: 1.03,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 200,
               }}
               src={getImage(1)}
               className="
@@ -599,13 +533,11 @@ const AboutSection = () => {
 
                 border
                 border-white/20
-
-                shadow-[0_0_80px_rgba(255,255,255,0.1)]
               "
             />
           </motion.div>
 
-          {/* RIGHT PREVIEW */}
+          {/* RIGHT */}
           <motion.img
             key={getImage(2)}
             src={getImage(2)}
@@ -634,686 +566,338 @@ const AboutSection = () => {
         </div>
       </div>
 
-      {/* EXPERIENCE SECTION */}
-      <div
-        className="
-          relative
-
-          w-screen
-
-          left-1/2
-          -translate-x-1/2
-
-          flex
-          flex-col
-          items-center
-          justify-center
-
-          text-center
-
-          mt-24
-          mb-16
-
-          px-6
-        "
-      >
-        {/* SMALL */}
-        <motion.p
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
-          viewport={{
-            once: true,
-          }}
-          className="
-            uppercase
-
-            tracking-[8px]
-
-            text-zinc-500
-            text-sm
-
-            mb-5
-          "
-        >
-          THE EXPERIENCE
-        </motion.p>
-
-        {/* MAIN */}
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 1,
-          }}
-          viewport={{
-            once: true,
-          }}
-          className="
-            flex
-            flex-col
-            items-center
-            justify-center
-
-            text-center
-
-            leading-[0.92]
-
-            overflow-visible
-          "
-        >
-          <h1
-            className="
-              text-[52px]
-              sm:text-[72px]
-              md:text-[92px]
-
-              font-black
-
-              tracking-[-6px]
-
-              text-white
-
-              whitespace-nowrap
-
-              leading-none
-            "
-          >
-            Experience That
-          </h1>
-
-<motion.h2
-  animate={{
-    backgroundPosition: [
-      "0% 50%",
-      "100% 50%",
-      "0% 50%",
-    ],
-  }}
-  transition={{
-    duration: 6,
-    repeat: Infinity,
-    ease: "linear",
-  }}
-  className="
-    mt-3
-
-    px-14
-    py-5
-
-    text-[38px]
-    sm:text-[54px]
-    md:text-[68px]
-
-    leading-[1.3]
-
-    whitespace-nowrap
-
-    overflow-visible
-
-    text-transparent
-    bg-clip-text
-
-    bg-[length:300%_300%]
-
-    bg-gradient-to-r
-    from-blue-500
-    via-fuchsia-500
-    to-pink-500
-  "
-  style={{
-    fontFamily: "'Quintessential', serif",
-  }}
->
-  Brings Ideas to Life
-</motion.h2>
-        </motion.div>
-      </div>
-     <div
-        className="
-          relative
-
-          max-w-[1500px]
-          mx-auto
-
-          px-10
-        "
-      >
-        {/* BASE DARK LINE */}
-
-        <div
-          className="
-            absolute
-
-            left-[42%]
-            top-0
-
-            w-[5px]
-            h-full
-
-            rounded-full
-
-            bg-zinc-900
-          "
-        />
-
-        {/* ACTIVE RGB LINE */}
-
-        <motion.div
-          style={{
-            height: lineHeight,
-          }}
-          className="
-            absolute
-
-            left-[42%]
-            top-0
-
-            w-[5px]
-
-            rounded-full
-
-            bg-gradient-to-b
-            from-fuchsia-500
-            via-red-500
-            to-cyan-400
-
-            shadow-[0_0_35px_rgba(236,72,153,0.9)]
-          "
-        />
-
-        {/* ================= ITEM 1 ================= */}
-
-        <div
-          className="
-            relative
-
-            grid
-            grid-cols-1
-            lg:grid-cols-[0.9fr_1.1fr]
-
-            gap-40
-
-            mb-52
-          "
-        >
-          {/* BALL */}
-
-          <motion.div
-            style={{
-              top: useTransform(
-                scrollYProgress,
-                [0, 0.5],
-                ["0%", "100%"]
-              ),
-            }}
-            className="
-              absolute
-
-              left-[42%]
-
-              -translate-x-1/2
-
-              z-40
-            "
-          >
-            <div
-              className="
-                relative
-
-                w-11
-                h-11
-
-                rounded-full
-
-                border-[3px]
-                border-fuchsia-500
-
-                bg-black
-
-                shadow-[0_0_40px_rgba(236,72,153,1)]
-              "
-            >
-              <div
-                className="
-                  absolute
-                  inset-[6px]
-
-                  rounded-full
-
-                  bg-gradient-to-r
-                  from-fuchsia-500
-                  via-red-500
-                  to-cyan-400
-                "
-              />
-            </div>
-          </motion.div>
-
-          {/* LEFT */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -100,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            transition={{
-              duration: 1,
-            }}
-            viewport={{
-              once: false,
-            }}
-            className="
-              text-right
-
-              pr-32
-            "
-          >
-            <p
-              className="
-                text-zinc-400
-
-                font-semibold
-
-                mb-6
-              "
-            >
-              MAY 2025 - PRESENT
-            </p>
-
-            <h1
-              className="
-                text-5xl
-
-                italic
-
-                text-fuchsia-500
-
-                mb-8
-              "
-              style={{
-                fontFamily:
-                  "'Quintessential', serif",
+      {/* ========== EDUCATION SECTION ========== */}
+      <div className="relative z-10 max-w-7xl ml-auto mr-[330px] px-0 py-20">
+        
+        {/* Section Header */}
+        <div className="text-left mb-12 ml-0 md:-ml-8">
+          <p className="text-sm uppercase tracking-[6px] text-zinc-500 mb-10">
+            ACADEMIC JOURNEY
+          </p>
+          <h2 className="sm:text-4xl md:text-5xl lg:text-6xl font-black text-white">
+            Education &
+            <motion.span
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
-            >
-              Intel
-            </h1>
-
-            <div
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear",
+              }}
               className="
-                space-y-4
-
-                text-zinc-400
+                text-transparent 
+                bg-clip-text 
+                bg-gradient-to-r 
+                from-blue-500 
+                via-purple-500 
+                to-pink-500
+                bg-[length:300%_300%]
+                quintessential-regular
               "
             >
-              <p
-                className="
-                  flex
-                  items-center
-                  justify-end
-                  gap-3
-                "
-              >
-                <MapPin size={18} />
-
-                Chandigarh, India
-              </p>
-
-              <p
-                className="
-                  flex
-                  items-center
-                  justify-end
-                  gap-3
-                "
-              >
-                <Briefcase size={18} />
-
-                Internship (Remote/On-site)
-              </p>
-            </div>
-          </motion.div>
-
-          {/* RIGHT */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 100,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 1,
-            }}
-            viewport={{
-              once: false,
-            }}
-            className="
-              pl-28
-            "
-          >
-            <h1
-              className="
-                text-5xl
-
-                font-bold
-
-                text-white
-
-                mb-12
-              "
-            >
-              AI Engineer Intern
-            </h1>
-
-            <div
-              className="
-                space-y-8
-
-                text-zinc-300
-
-                text-lg
-
-                leading-[2]
-              "
-            >
-              <p>
-                Engineered scalable AI models using deep learning and
-                large-scale datasets.
-              </p>
-
-              <p>
-                Built and fine-tuned transformer models for NLP tasks,
-                achieving faster inference.
-              </p>
-
-              <p>
-                Streamlined deployment with ONNX and TensorRT.
-              </p>
-            </div>
-
-            {/* SKILLS */}
-
-            <div
-              className="
-                flex
-                flex-wrap
-                gap-4
-
-                mt-12
-              "
-            >
-              {[
-                "PyTorch",
-                "TensorFlow",
-                "ONNX",
-                "TensorRT",
-                "Python",
-                "Agile",
-              ].map((skill) => (
-                <div
-                  key={skill}
-                  className="
-                    px-5
-                    py-2.5
-
-                    rounded-full
-
-                    border
-                    border-white/10
-
-                    bg-white/[0.03]
-
-                    text-white
-                    text-sm
-
-                    backdrop-blur-xl
-
-                    hover:border-fuchsia-500/50
-
-                    transition-all
-                    duration-300
-                  "
-                >
-                  {skill}
-                </div>
-              ))}
-            </div>
-          </motion.div>
+              {" "}Qualifications
+            </motion.span>
+          </h2>
         </div>
 
-        {/* ================= ITEM 2 ================= */}
-
-        <div
-          className="
-            relative
-
-            grid
-            grid-cols-1
-            lg:grid-cols-[0.9fr_1.1fr]
-
-            gap-40
-          "
-        >
-          {/* LEFT */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -100,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            transition={{
-              duration: 1,
-            }}
-            viewport={{
-              once: false,
-            }}
+        {/* ✅ EDUCATION CONTENT - ADD KARO */}
+        <div className="text-left ml-0 md:-ml-8 max-w-3xl">
+          <div
             className="
-              text-right
-
-              pr-32
+              mt-6
+              space-y-8
+              text-zinc-400
+              text-base
+              sm:text-lg
+              leading-[1.9]
             "
           >
-            <p
-              className="
-                text-zinc-400
+            {/* Degree & College */}
+            <div>
+              <h3 className="text-white text-2xl font-bold mb-2">
+                B.Tech in Computer Science
+              </h3>
+              <p className="text-purple-400 text-lg mb-1">
+                SRM University, India
+              </p>
+              <p className="text-zinc-500 text-sm">
+                2023 — 2027 • CGPA: 8.5/10
+              </p>
+            </div>
 
-                font-semibold
-
-                mb-6
-              "
-            >
-              JAN 2025 - CURRENT
+            {/* About College */}
+            <p>
+              SRM University is renowned for its excellence in engineering education, 
+              offering cutting-edge facilities and a curriculum designed to meet 
+              global industry standards. The diverse campus culture and rigorous 
+              academic environment have played a key role in shaping my technical 
+              expertise and professional growth.
             </p>
 
-            <h1
-              className="
-                text-5xl
-
-                italic
-
-                text-cyan-400
-
-                mb-8
-              "
-              style={{
-                fontFamily:
-                  "'Quintessential', serif",
-              }}
-            >
-              Open Source
-            </h1>
-
-            <div
-              className="
-                space-y-4
-
-                text-zinc-400
-              "
-            >
-              <p
-                className="
-                  flex
-                  items-center
-                  justify-end
-                  gap-3
-                "
-              >
-                <MapPin size={18} />
-
-                Global
+            {/* Key Courses - Permanent white line neeche */}
+            <div>
+              <p className="text-white font-semibold mb-3 inline-block border-b border-white pb-1">
+                Key Courses
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </p>
-
-              <p
-                className="
-                  flex
-                  items-center
-                  justify-end
-                  gap-3
-                "
-              >
-                <Briefcase size={18} />
-
-                Contributor
-              </p>
-            </div>
-          </motion.div>
-
-          {/* RIGHT */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 100,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 1,
-            }}
-            viewport={{
-              once: false,
-            }}
-            className="
-              pl-28
-            "
-          >
-            <h1
-              className="
-                text-5xl
-
-                font-bold
-
-                text-white
-
-                mb-12
-              "
-            >
-              Open Source Contributor
-            </h1>
-
-            <div
-              className="
-                space-y-8
-
-                text-zinc-300
-
-                text-lg
-
-                leading-[2]
-              "
-            >
-              <p>
-                Actively contributing to open-source projects while
-                sharpening DSA skills.
-              </p>
-
-              <p>
-                Focused on improving code quality and collaborating
-                globally.
-              </p>
-
-              <p>
-                Exploring scalable UI/UX and backend integrations.
-              </p>
+              <div className="flex flex-wrap gap-x-4 gap-y-2 mt-3">
+                {["Data Structures & Algorithms", "Machine Learning", "Deep Learning", 
+                  "Artificial Intelligence", "Compiler Design", "Database Management Systems", "Operating Systems",
+                  "Computer Networks", "Cloud Computing"].map((course, i) => (
+                  <span 
+                    key={i} 
+                    className="text-zinc-400 text-base relative inline-block cursor-pointer group/course hover:text-white transition-all duration-300"
+                  >
+                    • {course}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover/course:w-full"></span>
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <div
-              className="
-                flex
-                flex-wrap
-                gap-4
+            {/* Beyond Academics - Permanent white line neeche */}
+            <div>
+              <p className="text-white font-semibold mb-3 inline-block border-b border-white pb-1">
+                Leadership & Community Engagement
+              </p>
+              <ul className="space-y-3 mt-3">
+                
+                {/* TEDx SRMIST */}
+                <li className="text-zinc-400">
+                  <span className="text-white font-medium">TEDx SRMIST</span>
+                  <br />
+                  Co-Technical Lead
+                  <br />
+                  <span className="text-sm text-zinc-500">
+                    ● Collaborated with the technical team to develop and manage the TEDx SRMIST platform. Coordinated with 10+ developers and supported deployment, integration, and event operations.
+                  </span>
+                </li>
 
-                mt-12
-              "
-            >
-              {[
-                "Next.js",
-                "TypeScript",
-                "Tailwind",
-                "Turborepo",
-              ].map((skill) => (
-                <div
-                  key={skill}
-                  className="
-                    px-5
-                    py-2.5
+                {/* Khel SRMIST */}
+                <li className="text-zinc-400 mt-3">
+                  <span className="text-white font-medium">Khel SRMIST</span>
+                  <br />
+                  Head Coordinator
+                  <br />
+                  <span className="text-sm text-zinc-500">
+                   ● Led the organization of a university-level sports event, managing logistics, scheduling, volunteers, and on-ground execution to ensure smooth event operations.
+                    </span>
+                </li>
 
-                    rounded-full
+                {/* CCDF */}
+                <li className="text-zinc-400 mt-3">
+                  <span className="text-white font-medium">CCDF</span>
+                  <br />
+                  Community Engagement Intern
+                  <br />
+                  <span className="text-sm text-zinc-500">
+                  ● Contributed to digital literacy, community outreach, and women empowerment initiatives. Worked with teams to support social impact programs and community engagement activities.
+                   </span>
+                </li>
 
-                    border
-                    border-white/10
-
-                    bg-white/[0.03]
-
-                    text-white
-                    text-sm
-
-                    backdrop-blur-xl
-
-                    hover:border-cyan-400/50
-
-                    transition-all
-                    duration-300
-                  "
-                >
-                  {skill}
-                </div>
-              ))}
+              </ul>
             </div>
-          </motion.div>
-    </div>
+          </div>
+        </div>
+      </div>
+
+
+      {/* EXPERIENCE TITLE */}
+
+<div
+  className="
+    relative
+    z-10
+
+    flex
+    flex-col
+    items-center
+    justify-center
+
+    text-center
+
+    py-20
+
+    mt-20
+  "
+>
+  {/* FIRST LINE */}
+  <h1
+    className="
+      text-white
+
+    sm:text-4xl
+    md:text-5xl
+    lg:text-6xl
+
+      font-black
+
+      tracking-[-4px]
+
+      leading-[1.1]
+
+      pb-2
+    "
+  >
+    Experience That
+  </h1>
+
+  {/* SECOND LINE */}
+  <div
+    className="
+      flex
+      items-center
+      justify-center
+
+      gap-4
+
+      flex-wrap
+
+      w-full
+
+      overflow-visible
+    "
+  >
+    {/* BRINGS */}
+    <h1
+      className="
+        text-white
+
+    sm:text-4xl
+    md:text-5xl
+    lg:text-6xl
+
+        font-black
+
+        tracking-[-4px]
+
+        leading-[1.1]
+
+        pb-2
+      "
+    >
+      Brings
+    </h1>
+
+    {/* IDEAS TO LIFE */}
+    <motion.span
+      animate={{
+        backgroundPosition: [
+          "0% 50%",
+          "100% 50%",
+          "0% 50%",
+        ],
+      }}
+      transition={{
+        duration: 5,
+        repeat: Infinity,
+        ease: "linear",
+      }}
+      className="
+        quintessential-regular
+
+        text-5xl
+        sm:text-7xl
+
+        leading-[1.2]
+
+        pb-4
+
+        inline-block
+
+        whitespace-nowrap
+
+        pr-6
+
+        text-transparent
+        bg-clip-text
+
+        bg-[length:300%_300%]
+
+        bg-gradient-to-r
+        from-blue-500
+        via-purple-500
+        to-pink-500
+      "
+    >
+      Ideas to Life
+    </motion.span>
   </div>
-</section>
+</div>
+
+      {/* TIMELINE */}
+      <Timeline
+        items={[
+          {
+            date: "2025 — PRESENT",
+
+            company: "TEDx SRMIST",
+
+            companyGradient:
+              "linear-gradient(90deg,#ff2d78,#ff7ad9)",
+
+            location:
+              "India",
+
+            jobType:
+              "Co-Technical Lead",
+
+            title:
+              "Co-Technical Lead",
+
+            description: [
+              "Collaborated with technical team to architect and deploy the official TEDx event platform.",
+
+              "Coordinated a team of 10+ developers.",
+
+              "Managed deployment pipelines and performance optimization.",
+
+              "Worked with Next.js and Agile workflows.",
+            ],
+
+            tags: [
+              "Next.js",
+              "React",
+              "TypeScript",
+              "Tailwind",
+            ],
+          },
+
+          {
+            date: "2025",
+
+            company: "Craft and Community Development Foundation (CCDF)",
+
+            companyGradient:
+              "linear-gradient(90deg,#60a5fa,#a855f7)",
+
+            location: "On-Site",
+
+            jobType:
+              "Community Engagement Intern",
+
+            title:
+              "Community Engagement (Intern)",
+
+            description: [
+              "Contributed to women empowerment initiatives by assisting in digital literacy and upskilling sessions.",
+
+              "Collaborated with teams to support community welfare programs and outreach activities.",
+
+              "Demonstrated leadership, teamwork, and a service-oriented mindset in social impact projects.",
+
+              "Actively participated in organizing and executing community engagement programs.",
+            ],
+
+            tags: [
+            ],
+          },
+        ]}
+      />
+
+    </section>
   );
 };
-
 
 export default AboutSection;

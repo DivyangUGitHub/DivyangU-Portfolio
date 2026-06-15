@@ -6,10 +6,9 @@ interface HeroSectionProps {
   setActivePage: (page: string) => void;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({
-  setActivePage,
+const HeroSection: React.FC<HeroSectionProps> = ({ 
+  setActivePage: _setActivePage  // ← Underscore laga do
 }) => {
-
   return (
     <section className="relative h-screen bg-black overflow-hidden text-white">
 
@@ -93,7 +92,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   </div>
 
   <h4 className="font-bold uppercase text-sm sm:text-base leading-none">
-    Full Stack Dev,
+    Software Developer ,
   </h4>
 
   <p className="text-zinc-500 uppercase text-sm sm:text-base mt-2">
@@ -164,7 +163,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             sm:mt-5
           "
         >
-          I DESIGN AND BUILD PRODUCTS THAT
+          I DEVELOP AND BUILD PRODUCTS THAT
         </motion.p>
 
         {/* QUOTE */}

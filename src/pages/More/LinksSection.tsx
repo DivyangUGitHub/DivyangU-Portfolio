@@ -4,7 +4,12 @@ import {
 
 import {
   ArrowUpRight,
+  Github,
+  Linkedin,
+  Mail,
 } from "lucide-react";
+
+import { SiX } from "react-icons/si";
 
 const socialLinks = [
   {
@@ -12,6 +17,7 @@ const socialLinks = [
     title: "GITHUB",
     username: "@DivyangUGitHub",
     url: "https://github.com/DivyangUGitHub",
+    icon: Github,
   },
 
   {
@@ -19,14 +25,15 @@ const socialLinks = [
     title: "X",
     username: "@Divyang_Upreti_",
     url: "https://x.com/Divyang_Upreti_",
+    icon: SiX,
   },
 
   {
     number: "03",
     title: "LINKEDIN",
-    username:
-      "@divyang-upreti",
+    username: "@divyang-upreti",
     url: "https://www.linkedin.com/in/divyang-upreti/",
+    icon: Linkedin,
   },
 
   {
@@ -34,6 +41,7 @@ const socialLinks = [
     title: "EMAIL",
     username: "upretidivyang@gmail.com",
     url: "https://mail.google.com/mail/u/1/",
+    icon: Mail,
   },
 ];
 
@@ -97,6 +105,7 @@ const LinksSection = () => {
 
           {/* LEFT */}
           <div>
+
             <p
               className="
                 text-zinc-500
@@ -143,6 +152,7 @@ const LinksSection = () => {
 
               PRESENCE
             </h1>
+
           </div>
 
           {/* RIGHT IMAGE */}
@@ -153,12 +163,14 @@ const LinksSection = () => {
               lg:justify-end
             "
           >
+
             <motion.img
               whileHover={{
                 scale: 1.03,
               }}
               src="/profile.jpg"
               alt="profile"
+
               className="
                 w-[240px]
                 h-[240px]
@@ -177,184 +189,240 @@ const LinksSection = () => {
                 border-white/10
               "
             />
+
           </div>
+
         </div>
 
+        {/* ================================================= */}
         {/* LINKS */}
+        {/* ================================================= */}
+
         <div
           className="
             mt-20
           "
         >
+
           {socialLinks.map(
-            (item) => (
-              <motion.a
-                key={item.title}
-                href={item.url}
-                target="_blank"
+            (item) => {
 
-                whileHover={{
-                  x: 10,
-                }}
+              const Icon = item.icon;
 
-                className="
-                  group
+              return (
 
-                  relative
+                <motion.a
+                  key={item.title}
+                  href={item.url}
+                  target="_blank"
 
-                  flex
-                  items-center
-                  justify-between
+                  whileHover={{
+                    x: 0,
+                  }}
 
-                  border-t
-                  border-white/10
-
-                  py-8
-                  px-2
-
-                  overflow-hidden
-
-                  transition-all
-                  duration-500
-                "
-              >
-
-                {/* WHITE HOVER BG */}
-                <div
                   className="
-                    absolute
-                    inset-0
+                    group
 
-                    bg-white
-
-                    scale-y-0
-
-                    origin-bottom
-
-                    group-hover:scale-y-100
-
-                    transition-transform
-                    duration-500
-                  "
-                />
-
-                {/* LEFT */}
-                <div
-                  className="
                     relative
-                    z-10
 
                     flex
                     items-center
+                    justify-between
 
-                    gap-6
-                    sm:gap-10
-                  "
-                >
-
-                  {/* NUMBER */}
-                  <span
-                    className="
-                      text-zinc-500
-
-                      text-sm
-
-                      group-hover:text-black
-
-                      transition-all
-                      duration-500
-                    "
-                  >
-                    {item.number}
-                  </span>
-
-                  {/* TITLE + USERNAME */}
-                  <div>
-
-                    <h2
-                      className="
-                        text-white
-
-                        font-black
-
-                        text-[11vw]
-                        sm:text-[8vw]
-                        md:text-[6vw]
-                        lg:text-[4vw]
-
-                        leading-none
-
-                        group-hover:text-black
-
-                        transition-all
-                        duration-500
-                      "
-                    >
-                      {item.title}
-                    </h2>
-
-                    {/* USERNAME */}
-                    <p
-                      className="
-                        mt-2
-
-                        text-zinc-400
-
-                        text-sm
-                        sm:text-base
-
-                        opacity-0
-                        translate-y-5
-
-                        group-hover:opacity-100
-                        group-hover:translate-y-0
-
-                        group-hover:text-black
-
-                        transition-all
-                        duration-500
-                      "
-                    >
-                      {item.username}
-                    </p>
-                  </div>
-                </div>
-
-                {/* ICON */}
-                <div
-                  className="
-                    relative
-                    z-10
-
-                    w-12
-                    h-12
-
-                    sm:w-16
-                    sm:h-16
-
-                    rounded-full
-
-                    border
+                    border-t
                     border-white/10
 
-                    flex
-                    items-center
-                    justify-center
+                    py-8
+                    px-2
 
-                    text-white
-
-                    group-hover:bg-black
-                    group-hover:text-white
-                    group-hover:border-black
+                    overflow-hidden
 
                     transition-all
                     duration-500
                   "
                 >
-                  <ArrowUpRight />
-                </div>
-              </motion.a>
-            )
+
+                  {/* WHITE HOVER BG */}
+                  <div
+                    className="
+                      absolute
+                      inset-0
+
+                      bg-white
+
+                      scale-y-0
+
+                      origin-bottom
+
+                      group-hover:scale-y-100
+
+                      transition-transform
+                      duration-500
+                    "
+                  />
+
+                  {/* LEFT */}
+                  <div
+                    className="
+                      relative
+                      z-10
+
+                      flex
+                      items-center
+
+                      gap-6
+                      sm:gap-10
+                    "
+                  >
+
+                    {/* NUMBER */}
+                    <span
+                      className="
+                        text-zinc-500
+
+                        text-sm
+
+                        group-hover:text-black
+
+                        transition-all
+                        duration-500
+                      "
+                    >
+                      {item.number}
+                    </span>
+
+                    {/* TITLE + USERNAME */}
+                    <div>
+
+                      {/* TITLE */}
+                      <h2
+                        className="
+                          text-white
+
+                          font-black
+
+                          text-[11vw]
+                          sm:text-[8vw]
+                          md:text-[6vw]
+                          lg:text-[4vw]
+
+                          leading-none
+
+                          group-hover:text-black
+
+                          transition-all
+                          duration-500
+                        "
+                      >
+                        {item.title}
+                      </h2>
+
+                      {/* USERNAME */}
+                      <p
+                        className="
+                          mt-2
+
+                          text-zinc-400
+
+                          text-sm
+                          sm:text-base
+
+                          opacity-0
+                          translate-y-5
+
+                          group-hover:opacity-100
+                          group-hover:translate-y-0
+
+                          group-hover:text-black
+
+                          transition-all
+                          duration-500
+                        "
+                      >
+                        {item.username}
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                  {/* ================================================= */}
+                  {/* ICON BUTTON */}
+                  {/* ================================================= */}
+
+                  <div
+                    className="
+                      relative
+                      z-10
+
+                      w-12
+                      h-12
+
+                      sm:w-16
+                      sm:h-16
+
+                      rounded-full
+
+                      border
+                      border-white/10
+
+                      flex
+                      items-center
+                      justify-center
+
+                      overflow-hidden
+
+                      transition-all
+                      duration-500
+
+                      group-hover:bg-black
+                      group-hover:border-black
+                    "
+                  >
+
+                    {/* ARROW */}
+                    <div
+                      className="
+                        absolute
+
+                        transition-all
+                        duration-500
+
+                        group-hover:opacity-0
+                        group-hover:scale-0
+
+                        text-white
+                      "
+                    >
+                      <ArrowUpRight size={22} />
+                    </div>
+
+                    {/* REAL LOGO */}
+                    <div
+                      className="
+                        absolute
+
+                        opacity-0
+                        scale-0
+
+                        group-hover:opacity-100
+                        group-hover:scale-100
+
+                        transition-all
+                        duration-500
+
+                        text-white
+                      "
+                    >
+                      <Icon size={20} />
+                    </div>
+
+                  </div>
+
+                </motion.a>
+
+              );
+            }
           )}
 
           {/* LAST BORDER */}
@@ -364,8 +432,11 @@ const LinksSection = () => {
               border-white/10
             "
           />
+
         </div>
+
       </div>
+
     </section>
   );
 };

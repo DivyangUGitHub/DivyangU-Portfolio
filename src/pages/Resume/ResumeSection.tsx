@@ -303,7 +303,7 @@ const ResumeSection = () => {
                   whileTap={{
                     scale: 0.95,
                   }}
-                  href="/resume.pdf"
+                  href="/DivynagU.Resume.pdf"
                   target="_blank"
                   className="
                     flex
@@ -343,7 +343,7 @@ const ResumeSection = () => {
                   whileTap={{
                     scale: 0.95,
                   }}
-                  href="/resume.pdf"
+                  href="/DivyangU.Resume.pdf"
                   download
                   className="
                     flex
@@ -409,8 +409,8 @@ const ResumeSection = () => {
               "
             >
               <img
-                src="/resume-preview.png"
-                alt="resume"
+                src="/DivyangU.Resume.png"
+                alt="Resume"
                 className="
                   w-full
 

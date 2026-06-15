@@ -1,4 +1,4 @@
-import React, {
+import {
   useState,
   useRef,
   useEffect,
@@ -21,22 +21,22 @@ const socials = [
 
   {
     icon: <Github size={16} />,
-    link: "https://github.com/YOUR_USERNAME",
+    link: "https://github.com/DivyangUGitHub",
   },
 
   {
     icon: <Instagram size={16} />,
-    link: "https://instagram.com/YOUR_USERNAME",
+    link: "https://www.instagram.com/_._onyxin_/",
   },
 
   {
     icon: <Linkedin size={16} />,
-    link: "https://linkedin.com/in/YOUR_USERNAME",
+    link: "https://www.linkedin.com/in/divyang-upreti/",
   },
 
   {
     icon: <Mail size={16} />,
-    link: "mailto:yourmail@gmail.com",
+    link: "mailto:upretidivyang@gmail.com",
   },
 
 ];

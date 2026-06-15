@@ -1,17 +1,15 @@
 import React from "react";
-import { PageType } from "../../App";
-
+import Orb from "../Orb";
 import {
   Github,
   Linkedin,
   Instagram,
   Send,
-  Twitter,
 } from "lucide-react";
+
+import { SiX } from "react-icons/si";
 interface FooterProps {
-  setActivePage: React.Dispatch<
-    React.SetStateAction<PageType>
-  >;
+  setActivePage: (page: string) => void;  // ← Ye change karo
 }
 
 const Footer: React.FC<FooterProps> = ({
@@ -60,19 +58,21 @@ const Footer: React.FC<FooterProps> = ({
       />
 
       {/* HERO */}
-      <div
-        className="
-          flex
-          flex-col
-          xl:flex-row
+<div
+  className="
+    relative
 
-          items-start
-          justify-between
+    flex
+    flex-col
+    xl:flex-row
 
-          gap-12
-          lg:gap-16
-        "
-      >
+    items-start
+    justify-between
+
+    gap-12
+    lg:gap-16
+  "
+>
 
         {/* LEFT */}
         <div className="w-full">
@@ -88,6 +88,37 @@ const Footer: React.FC<FooterProps> = ({
               flex-wrap
             "
           >
+            {/* RIGHT SIDE ORB */}
+<div
+  className="
+    absolute
+
+    right-[-20px]
+    top-[0px]
+
+    hidden lg:block
+
+    w-[180px]
+    h-[180px]
+
+    xl:w-[240px]
+    xl:h-[240px]
+
+    opacity-[0.95]
+
+    z-0
+
+    pointer-events-auto
+  "
+>
+  <Orb
+    hue={260}
+    hoverIntensity={0.8}
+    rotateOnHover={true}
+    forceHoverState={false}
+    backgroundColor="#000000"
+  />
+</div>
 
 {/* PROFILE */}
 <img
@@ -151,11 +182,9 @@ const Footer: React.FC<FooterProps> = ({
 
 <h1
   className="
-    ml-[60px]
-    sm:ml-[90px]
-    md:ml-[110px]
+    pl-[0vw]
 
-text-[clamp(3rem,10vw,8rem)]
+    text-[clamp(3rem,10vw,8rem)]
 
     leading-[0.9]
 
@@ -325,9 +354,8 @@ text-[clamp(3rem,10vw,8rem)]
       <button
         key={item.title}
 
-        onClick={() =>
-         setActivePage(item.page as PageType)
-        }
+        // ✅ YAHAN (as PageType) HATA DO
+        onClick={() => setActivePage(item.page)}
 
         className="
           group
@@ -448,14 +476,20 @@ text-[clamp(3rem,10vw,8rem)]
         title: "Uses",
         page: "uses",
       },
+
+      // ✅ GUESTBOOK ADD KARO
+      {
+        title: "Guestbook",
+        page: "guestbook",
+      },
+
     ].map((item) => (
 
       <button
         key={item.title}
 
-        onClick={() =>
-          setActivePage(item.page as PageType)
-        }
+        // ✅ YAHAN (as PageType) HATA DO
+        onClick={() => setActivePage(item.page)}
 
         className="
           group
@@ -532,65 +566,6 @@ text-[clamp(3rem,10vw,8rem)]
     ))}
 
   </div>
-
-</div>
-
-          {/* LEGAL */}
-          <div>
-
-            <h3
-              className="
-                text-zinc-500
-
-                text-sm
-
-                mb-5
-                sm:mb-8
-              "
-            >
-              Legal
-            </h3>
-
-            <div
-              className="
-                flex
-                flex-col
-
-                gap-4
-                sm:gap-5
-              "
-            >
-
-              {[
-                "Privacy Policy",
-                "Terms & Conditions",
-              ].map((item) => (
-
-                <a
-                  key={item}
-                  href="#"
-
-                  className="
-                    text-white/90
-
-                    text-sm
-                    sm:text-base
-
-                    hover:text-white
-
-                    transition-all
-                    duration-300
-
-                    hover:translate-x-1
-                  "
-                >
-                  {item}
-                </a>
-
-              ))}
-
-            </div>
-
             {/* DMCA */}
             <div
               className="
@@ -627,7 +602,6 @@ text-[clamp(3rem,10vw,8rem)]
                   font-medium
                 "
               >
-                DMCA PROTECTED
               </div>
 
               <p
@@ -642,9 +616,6 @@ text-[clamp(3rem,10vw,8rem)]
                   leading-relaxed
                 "
               >
-                This site is protected.
-                Read our Privacy Policy &
-                Terms.
               </p>
 
             </div>
@@ -722,9 +693,9 @@ text-[clamp(3rem,10vw,8rem)]
     },
 
     {
-      icon: Twitter,
+      icon: SiX,
       color:
-        "hover:text-[#1DA1F2]",
+        "hover:text-white",
       link: "https://x.com/Divyang_Upreti_",
     },
 

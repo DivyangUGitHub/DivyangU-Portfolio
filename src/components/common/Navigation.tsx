@@ -9,21 +9,17 @@ import {
 } from "framer-motion";
 
 import {
-  Moon,
   Phone,
   ChevronDown,
   Link2,
   Monitor,
-  BookOpen,
   Menu,
   X,
 } from "lucide-react";
 
 interface NavigationProps {
   activePage: string;
-  setActivePage: (
-    page: string
-  ) => void;
+  setActivePage: (page: string) => void;  // ← Ye pehle se sahi hai
 }
 
 const navItems = [
@@ -31,23 +27,21 @@ const navItems = [
     id: "home",
     label: "Home",
   },
-
   {
     id: "about",
     label: "About",
   },
-
   {
     id: "work",
     label: "Work",
   },
-
   {
     id: "resume",
     label: "Resume",
   },
 ];
 
+// ✅ YAHI PAR GUESTBOOK ADD KIYA HAI
 const moreItems = [
   {
     id: "links",
@@ -55,19 +49,11 @@ const moreItems = [
     desc: "Socials & Profiles",
     icon: <Link2 size={17} />,
   },
-
   {
     id: "uses",
     title: "Uses",
     desc: "My gear & software",
     icon: <Monitor size={17} />,
-  },
-
-  {
-    id: "guestbook",
-    title: "Guestbook",
-    desc: "Sign my wall",
-    icon: <BookOpen size={17} />,
   },
 ];
 
@@ -591,41 +577,6 @@ const Navigation: React.FC<
               mx-1
             "
           />
-
-          {/* THEME BUTTON */}
-          <motion.button
-            whileHover={{
-              scale: 1.08,
-            }}
-            whileTap={{
-              scale: 0.95,
-            }}
-            className="
-              w-9
-              h-9
-
-              rounded-full
-
-              bg-white/[0.04]
-
-              border
-              border-white/10
-
-              flex
-              items-center
-              justify-center
-
-              text-gray-300
-
-              hover:bg-white
-              hover:text-black
-
-              transition-all
-              duration-300
-            "
-          >
-            <Moon size={14} />
-          </motion.button>
 
           {/* CALL BUTTON */}
           <motion.button

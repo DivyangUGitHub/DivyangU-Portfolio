@@ -1,14 +1,5 @@
 import { motion } from "framer-motion";
 
-import {
-  Figma,
-  Github,
-  Code2,
-  BrainCircuit,
-  Music2,
-  Globe,
-} from "lucide-react";
-
 const hardwareItems = [
 
   {
@@ -322,744 +313,705 @@ const UsesSection = () => {
         </div>
 
         {/* HARDWARE */}
-        <div
-          className="
-            mt-24
-            lg:mt-32
+      <div
+  className="
+    mt-24
+    lg:mt-32
 
-            grid
-            grid-cols-1
-            xl:grid-cols-[420px_1fr]
+    border-t
+    border-white/10
 
-            gap-14
-            xl:gap-20
-          "
-        >
+    pt-12
+    lg:pt-16
 
-          {/* LEFT */}
-          <div
-            className="
-              xl:sticky
-              xl:top-32
+    grid
+    grid-cols-1
+    lg:grid-cols-[42%_58%]
 
-              h-fit
-            "
-          >
+    gap-10
+    lg:gap-16
 
-            <div
-              className="
-                flex
-                items-center
+    items-start
+  "
+>
+  {/* LEFT SIDE */}
+  <div
+    className="
+      lg:sticky
+      lg:top-32
 
-                gap-4
+      self-start
 
-                text-zinc-500
-
-                uppercase
-
-                tracking-[4px]
-
-                text-[10px]
-                sm:text-xs
-              "
-            >
-              <div
-                className="
-                  w-10
-                  h-px
-
-                  bg-white/20
-                "
-              />
-
-              01. HARDWARE
-            </div>
-
-            <h2
-              className="
-                mt-8
-
-                text-white
-
-                font-black
-
-                leading-none
-
-                sm:text-6xl
-                text-5xl
-              "
-            >
-              MY WORKSTATION
-            </h2>
-
-            <p
-              className="
-                mt-8
-
-                text-zinc-400
-
-                leading-relaxed
-
-                text-sm
-                sm:text-base
-                lg:text-lg
-                Quicksand
-              "
-            >
-              I believe in investing in absolute premium, 
-              high-performance gear. My setup is centered around a 
-              powerful MSI rig paired with sleek external peripherals, 
-              designed to minimize friction between thought and code. 
-              Every piece of hardware is meticulously chosen for ergonomics, 
-              aesthetic synergy, and raw computational power.
-            </p>
-          </div>
-
-          {/* RIGHT */}
-          <div
-            className="
-              grid
-              grid-cols-1
-              md:grid-cols-2
-
-              gap-5
-              lg:gap-7
-            "
-          >
-
-            {hardwareItems.map(
-              (
-                item,
-                index
-              ) => (
-
-                <motion.div
-                  key={index}
-
-                  whileHover={{
-                    y: -10,
-                  }}
-
-                  className={`
-                    group
-
-                    overflow-hidden
-
-                    rounded-[24px]
-                    sm:rounded-[30px]
-
-                    border
-                    border-white/10
-
-                    bg-[#050505]
-
-                    ${
-                      index === 0
-                        ? "md:col-span-2"
-                        : ""
-                    }
-                  `}
-                >
-
-                  <div
-                    className="
-                      overflow-hidden
-                    "
-                  >
-<div className="overflow-hidden">
-
-  {item.video ? (
-
-    <video
-      autoPlay
-      muted
-      loop
-      playsInline
-
+      h-fit
+    "
+  >
+    <div
       className="
-        w-full
+        flex
+        items-center
+        gap-4
 
-        h-[260px]
-        sm:h-[340px]
-        md:h-[420px]
-        lg:h-[560px]
-        xl:h-[680px]
+        text-zinc-500
+        uppercase
+        tracking-[4px]
 
-        object-cover
+        text-[10px]
+        sm:text-xs
       "
     >
-      <source
-        src={item.video}
-        type="video/mp4"
+      <div
+        className="
+          w-10
+          h-px
+          bg-white/20
+        "
       />
-    </video>
 
-  ) : (
+      01. HARDWARE
+    </div>
 
-    <img
-      src={item.image}
-      alt={item.title}
-
+    <h2
       className="
-        w-full
+        mt-8
 
-        h-[260px]
-        sm:h-[340px]
-        md:h-[420px]
-        lg:h-[560px]
-        xl:h-[680px]
+        text-white
+        font-black
+        leading-none
 
-        object-cover
-
-        group-hover:scale-105
-
-        transition-all
-        duration-700
+        text-5xl
+        sm:text-6xl
+        lg:text-7xl
       "
-    />
+    >
+      MY WORKSTATION
+    </h2>
 
-  )}
+    <p
+      className="
+        mt-8
 
-</div>
-                  </div>
+        text-zinc-400
+        leading-relaxed
 
-                  <div
-                    className="
-                      flex
-                      items-center
+        text-sm
+        sm:text-base
+        lg:text-lg
 
-                      gap-4
+        max-w-[650px]
 
-                      px-5
-                      sm:px-7
+        Quicksand
+      "
+    >
+      I believe in investing in absolute premium,
+      high-performance gear. My setup is centered around a
+      powerful MSI rig paired with sleek external peripherals,
+      designed to minimize friction between thought and code.
+      Every piece of hardware is meticulously chosen for
+      ergonomics, aesthetic synergy, and raw computational power.
+    </p>
+  </div>
 
-                      py-5
-                      sm:py-6
+  {/* RIGHT SIDE */}
+  <div
+    className="
+      grid
+      grid-cols-1
+      md:grid-cols-2
 
-                      border-t
-                      border-white/10
-                    "
-                  >
+      gap-5
+      lg:gap-7
+    "
+  >
+    {hardwareItems.map((item, index) => (
+      <motion.div
+        key={index}
+        whileHover={{
+          y: -10,
+        }}
+        className={`
+          group
+          overflow-hidden
 
-                    <h3
-                      className="
-                        text-white
+          rounded-[24px]
+          sm:rounded-[30px]
 
-                        font-semibold
+          border
+          border-white/10
 
-                        uppercase
+          bg-[#050505]
 
-                        text-xs
-                        sm:text-sm
-                        lg:text-base
-                      "
-                    >
-                      {item.title}
-                    </h3>
+          ${
+            index === 0
+              ? "md:col-span-2"
+              : ""
+          }
+        `}
+      >
+        <div className="overflow-hidden">
+          {item.video ? (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="
+                w-full
 
-                    <div
-                      className="
-                        flex-1
-                        h-px
+                h-[260px]
+                sm:h-[340px]
+                md:h-[420px]
+                lg:h-[500px]
+                xl:h-[620px]
 
-                        bg-white/10
-                      "
-                    />
-                  </div>
-                </motion.div>
-              )
-            )}
-          </div>
+                object-cover
+              "
+            >
+              <source
+                src={item.video}
+                type="video/mp4"
+              />
+            </video>
+          ) : (
+            <img
+              src={item.image}
+              alt={item.title}
+              className="
+                w-full
+
+                h-[260px]
+                sm:h-[340px]
+                md:h-[420px]
+                lg:h-[500px]
+                xl:h-[620px]
+
+                object-cover
+
+                group-hover:scale-105
+
+                transition-all
+                duration-700
+              "
+            />
+          )}
         </div>
 
- {/* SOFTWARE */}
-<div
+        <div
           className="
-            mt-32
-            lg:mt-40
+            flex
+            items-center
+
+            gap-4
+
+            px-5
+            sm:px-7
+
+            py-5
+            sm:py-6
 
             border-t
             border-white/10
-
-            pt-24
-
-            grid
-            grid-cols-1
-            xl:grid-cols-[420px_1fr]
-
-            gap-14
-            xl:gap-20
           "
         >
-
-          <div
-            className="
-              xl:sticky
-              xl:top-32
-
-              h-fit
-            "
-          >
-
-            <div
-              className="
-                flex
-                items-center
-
-                gap-4
-
-                text-zinc-500
-
-                uppercase
-
-                tracking-[4px]
-
-                text-[10px]
-                sm:text-xs
-              "
-            >
-              <div
-                className="
-                  w-10
-                  h-px
-
-                  bg-white/20
-                "
-              />
-
-              02. SOFTWARE 
-            </div>
-
-            <h2
-              className="
-                mt-8
-
-                text-white
-
-                font-black
-
-                leading-none
-
-                text-[12vw]
-                sm:text-6xl
-                lg:text-7xl
-              "
-            >
-              DEV TOOLS
-            </h2>
-
-            <p
-              className="
-                mt-8
-
-                text-zinc-400
-
-                leading-relaxed
-
-               text-xs
-               sm:text-sm
-               lg:text-base
-               Quicksand
-              "
-            >
-            A highly optimized, blazingly fast software stack.
-            I rely heavily on VS Code/Cursor for primary development, 
-            Arc for fluid browsing, and an ensemble of productivity tools 
-            like Raycast and Obsidian. My digital workspace is strictly curated. 
-            If an app doesn't serve a critical function or sparks joy with 
-            its UI, it doesn't stay.
-            </p>
-          </div>
-
-          <div
-            className="
-              grid
-
-              grid-cols-1
-              sm:grid-cols-2
-              xl:grid-cols-4
-
-              gap-5
-              lg:gap-7
-            "
-          >
-
-    {softwareItems.map(
-      (
-        item,
-        index
-      ) => (
-
-        <motion.div
-          key={index}
-
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-
-          viewport={{
-            once: false,
-            amount: 0.2,
-          }}
-
-          transition={{
-            duration: 0.5,
-          }}
-
-          whileHover={{
-            y: -6,
-            scale: 1.02,
-          }}
-
-          className="
-            rounded-[20px]
-            sm:rounded-[24px]
-
-            border
-            border-white/10
-
-            bg-[#050505]
-
-            p-5
-            sm:p-6
-
-            flex
-            flex-col
-            items-center
-            justify-center
-
-            text-center
-
-            min-h-[170px]
-            sm:min-h-[190px]
-
-            group
-          "
-        >
-
-          {/* ICON */}
-          <div
-            className="
-              w-14
-              h-14
-
-              rounded-2xl
-
-              bg-white/5
-
-              border
-              border-white/10
-
-              flex
-              items-center
-              justify-center
-
-              text-white
-
-              group-hover:bg-white
-              group-hover:text-black
-
-              transition-all
-              duration-500
-            "
-          >
-            <img
-            src={item.image}
-            alt={item.title}
-
-               className="
-               w-5
-               h-5
-
-            object-contain
-            "
-          />
-          </div>
-
-          {/* TITLE */}
           <h3
             className="
-              mt-5
-
               text-white
 
               font-semibold
+              uppercase
 
-              text-sm
-              sm:text-base
+              text-xs
+              sm:text-sm
+              lg:text-base
             "
           >
             {item.title}
           </h3>
 
-          {/* DESC */}
-          <p
+          <div
             className="
-              mt-2
-
-              text-zinc-500
-
-              leading-relaxed
-
-              text-[11px]
-              sm:text-xs
+              flex-1
+              h-px
+              bg-white/10
             "
-          >
-            {item.desc}
-          </p>
-        </motion.div>
-      )
-    )}
+          />
+        </div>
+      </motion.div>
+    ))}
   </div>
 </div>
 
-        {/* AI & SOCIALS */}
+ {/* SOFTWARE */}
+<div
+  className="
+    mt-32
+    lg:mt-40
+
+    border-t
+    border-white/10
+
+    pt-24
+
+    grid
+    grid-cols-1
+    lg:grid-cols-[45%_55%]
+
+    gap-10
+    lg:gap-16
+  "
+>
+  {/* LEFT SIDE */}
+  <div
+    className="
+      lg:sticky
+      lg:top-24
+
+      h-fit
+    "
+  >
+    <div
+      className="
+        flex
+        items-center
+
+        gap-4
+
+        text-zinc-500
+
+        uppercase
+
+        tracking-[4px]
+
+        text-[10px]
+        sm:text-xs
+      "
+    >
+      <div
+        className="
+          w-10
+          h-px
+
+          bg-white/20
+        "
+      />
+
+      02. SOFTWARE
+    </div>
+
+    <h2
+      className="
+        mt-8
+
+        text-white
+
+        font-black
+
+        leading-none
+
+        text-[12vw]
+        sm:text-6xl
+        lg:text-7xl
+      "
+    >
+      DEV TOOLS
+    </h2>
+
+    <p
+      className="
+        mt-8
+
+        text-zinc-400
+
+        leading-relaxed
+
+        text-xs
+        sm:text-sm
+        lg:text-base
+
+        max-w-[650px]
+
+        Quicksand
+      "
+    >
+      A highly optimized, blazingly fast software stack.
+      I rely heavily on VS Code/Cursor for primary development,
+      Arc for fluid browsing, and an ensemble of productivity tools
+      like Raycast and Obsidian. My digital workspace is strictly curated.
+      If an app doesn't serve a critical function or sparks joy with
+      its UI, it doesn't stay.
+    </p>
+  </div>
+
+  {/* RIGHT SIDE */}
+  <div
+    className="
+      grid
+
+      grid-cols-2
+      md:grid-cols-3
+      lg:grid-cols-4
+
+      gap-4
+      lg:gap-6
+    "
+  >
+    {softwareItems.map((item, index) => (
+      <motion.div
+        key={index}
+        initial={{
+          opacity: 0,
+          y: 40,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: false,
+          amount: 0.2,
+        }}
+        transition={{
+          duration: 0.5,
+        }}
+        whileHover={{
+          y: -6,
+          scale: 1.02,
+        }}
+        className="
+          rounded-[20px]
+          sm:rounded-[24px]
+
+          border
+          border-white/10
+
+          bg-[#050505]
+
+          p-5
+          sm:p-6
+
+          flex
+          flex-col
+          items-center
+          justify-center
+
+          text-center
+
+          min-h-[170px]
+          sm:min-h-[190px]
+
+          group
+        "
+      >
+        {/* ICON */}
         <div
           className="
-            mt-32
-            lg:mt-40
+            w-14
+            h-14
 
-            border-t
-            border-white/10
+            rounded-2xl
 
-            pt-24
-
-            grid
-            grid-cols-1
-            xl:grid-cols-[420px_1fr]
-
-            gap-14
-            xl:gap-20
-          "
-        >
-
-          <div
-            className="
-              xl:sticky
-              xl:top-32
-
-              h-fit
-            "
-          >
-
-            <div
-              className="
-                flex
-                items-center
-
-                gap-4
-
-                text-zinc-500
-
-                uppercase
-
-                tracking-[4px]
-
-                text-[10px]
-                sm:text-xs
-              "
-            >
-              <div
-                className="
-                  w-10
-                  h-px
-
-                  bg-white/20
-                "
-              />
-
-              03. INTEGRATIONS
-            </div>
-
-            <h2
-              className="
-                mt-8
-
-                text-white
-
-                font-black
-
-                leading-none
-
-                text-[12vw]
-                sm:text-6xl
-                lg:text-7xl
-              "
-            >
-              AI & SOCIALS
-            </h2>
-
-            <p
-              className="
-                mt-8
-
-                text-zinc-400
-
-                leading-relaxed
-
-                text-xs
-               sm:text-sm
-               lg:text-base
-                Quicksand
-              "
-            >
-              Beyond bare metal and development tools, these are the 
-              platforms powering my daily workflows. I leverage advanced 
-              LLMs for rapid prototyping, reasoning, and context analysis, 
-              while staying connected across professional design networks. 
-              Every API and social integration is meticulously selected to 
-              amplify productivity.
-            </p>
-          </div>
-
-          <div
-            className="
-              grid
-
-              grid-cols-1
-              sm:grid-cols-2
-              xl:grid-cols-4
-
-              gap-5
-              lg:gap-7
-            "
-          >
-
-            {aiSocialItems.map(
-              (
-                item,
-                index
-              ) => (
-
-                 <motion.div
-          key={index}
-
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-
-          viewport={{
-            once: false,
-            amount: 0.2,
-          }}
-
-          transition={{
-            duration: 0.5,
-          }}
-
-          whileHover={{
-            y: -6,
-            scale: 1.02,
-          }}
-
-          className="
-            rounded-[20px]
-            sm:rounded-[24px]
+            bg-white/5
 
             border
             border-white/10
 
-            bg-[#050505]
-
-            p-5
-            sm:p-6
-
             flex
-            flex-col
             items-center
             justify-center
 
-            text-center
+            text-white
 
-            min-h-[170px]
-            sm:min-h-[190px]
+            group-hover:bg-white
+            group-hover:text-black
 
-            group
+            transition-all
+            duration-500
           "
         >
-            {/* ICON */}
-                  <div
-                    className="
-                                   w-14
-              h-14
+          <img
+            src={item.image}
+            alt={item.title}
+            className="
+              w-5
+              h-5
 
-              rounded-2xl
-
-              bg-white/5
-
-              border
-              border-white/10
-
-              flex
-              items-center
-              justify-center
-
-              text-white
-
-              group-hover:bg-white
-              group-hover:text-black
-
-              transition-all
-              duration-500
+              object-contain
             "
-          >
-                    <img
-                      src={item.image}
-                      alt={item.title}
-
-                      className="
-                        w-5
-                        h-5
-
-                        object-contain
-                      "
-                    />
-                  </div>
-
-                  <h3
-                    className="
-                      mt-5
-
-                      text-white
-
-                      font-semibold
-
-                      text-lg
-                      sm:text-xl
-                    "
-                  >
-                    {item.title}
-                  </h3>
-
-                  <p
-                    className="
-                      mt-2
-
-                      text-zinc-500
-
-                      text-sm
-                      sm:text-base
-                    "
-                  >
-                    {item.desc}
-                  </p>
-                </motion.div>
-              )
-            )}
-          </div>
+          />
         </div>
+
+        {/* TITLE */}
+        <h3
+          className="
+            mt-5
+
+            text-white
+
+            font-semibold
+
+            text-sm
+            sm:text-base
+          "
+        >
+          {item.title}
+        </h3>
+
+        {/* DESC */}
+        <p
+          className="
+            mt-2
+
+            text-zinc-500
+
+            leading-relaxed
+
+            text-[11px]
+            sm:text-xs
+          "
+        >
+          {item.desc}
+        </p>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
+        {/* AI & SOCIALS */}
+<div
+  className="
+    mt-16
+    lg:mt-24
+
+    border-t
+    border-white/10
+
+    pt-12
+    lg:pt-16
+
+    grid
+    grid-cols-1
+    lg:grid-cols-[45%_55%]
+
+    gap-8
+    xl:gap-12
+  "
+>
+  <div
+    className="
+      lg:sticky
+      lg:top-24
+
+      h-fit
+    "
+  >
+    <div
+      className="
+        flex
+        items-center
+
+        gap-3
+
+        text-zinc-500
+
+        uppercase
+
+        tracking-[3px]
+        lg:tracking-[4px]
+
+        text-[9px]
+        sm:text-[10px]
+        lg:text-xs
+      "
+    >
+      <div
+        className="
+          w-8
+          lg:w-10
+
+          h-px
+
+          bg-white/20
+        "
+      />
+
+      03. INTEGRATIONS
+    </div>
+
+    <h2
+      className="
+        mt-5
+        lg:mt-6
+
+        text-white
+
+        font-black
+
+        leading-[1.1]
+
+        text-4xl
+        sm:text-5xl
+        md:text-6xl
+        lg:text-7xl
+        xl:text-8xl
+      "
+    >
+      AI & SOCIALS
+    </h2>
+
+    <p
+      className="
+        mt-4
+        lg:mt-5
+
+        text-zinc-400
+
+        leading-relaxed
+
+        text-[10px]
+        sm:text-xs
+        lg:text-sm
+
+        max-w-[700px]
+
+        Quicksand
+      "
+    >
+      Beyond bare metal and development tools, these are the
+      platforms powering my daily workflows. I leverage advanced
+      LLMs for rapid prototyping, reasoning, and context analysis,
+      while staying connected across professional design networks.
+      Every API and social integration is meticulously selected to
+      amplify productivity.
+    </p>
+  </div>
+
+  <div
+    className="
+      grid
+
+      grid-cols-2
+      md:grid-cols-3
+      lg:grid-cols-4
+
+      gap-4
+      sm:gap-5
+      lg:gap-6
+    "
+  >
+    {aiSocialItems.map((item, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+        whileHover={{ y: -4, scale: 1.01 }}
+        className="
+          rounded-[16px]
+          sm:rounded-[20px]
+
+          border
+          border-white/10
+
+          bg-[#050505]
+
+          p-3
+          sm:p-4
+          md:p-5
+
+          flex
+          flex-col
+          items-center
+          justify-center
+
+          text-center
+
+          min-h-[130px]
+          sm:min-h-[150px]
+          md:min-h-[170px]
+
+          group
+        "
+      >
+        {/* ICON */}
+        <div
+          className="
+            w-10
+            h-10
+            lg:w-12
+            lg:h-12
+
+            rounded-xl
+
+            bg-white/5
+
+            border
+            border-white/10
+
+            flex
+            items-center
+            justify-center
+
+            text-white
+
+            group-hover:bg-white
+            group-hover:text-black
+
+            transition-all
+            duration-500
+          "
+        >
+          <img
+            src={item.image}
+            alt={item.title}
+            className="
+              w-3.5
+              h-3.5
+              lg:w-4
+              lg:h-4
+
+              object-contain
+            "
+          />
+        </div>
+
+        {/* TITLE */}
+        <h3
+          className="
+            mt-3
+            lg:mt-4
+
+            text-white
+
+            font-semibold
+
+            text-[11px]
+            sm:text-xs
+            lg:text-sm
+          "
+        >
+          {item.title}
+        </h3>
+
+        {/* DESC */}
+        <p
+          className="
+            mt-1
+
+            text-zinc-500
+
+            leading-relaxed
+
+            text-[9px]
+            sm:text-[10px]
+            lg:text-xs
+          "
+        >
+          {item.desc}
+        </p>
+      </motion.div>
+    ))}
+  </div>
+</div>
       </div>
     </section>
   );
