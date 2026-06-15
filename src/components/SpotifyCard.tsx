@@ -21,9 +21,7 @@ export default function SpotifyCard() {
   useEffect(() => {
     const fetchSpotify = async () => {
       try {
-        const res = await fetch(
-          "http://localhost:5000/api/spotify"
-        );
+        const res = await fetch("/api/spotify");
 
         const json = await res.json();
 

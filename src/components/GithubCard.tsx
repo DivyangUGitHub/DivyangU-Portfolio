@@ -76,10 +76,7 @@ export default function GithubCard() {
 
       try {
 
-        const res =
-          await fetch(
-            "http://localhost:5000/api/github"
-          );
+  const res = await fetch("/api/github");
 
         const json =
           await res.json();
