@@ -119,7 +119,7 @@ const secondProject = {
   liveUrl: "https://divyang-portfolio.vercel.app",
   githubUrl: "https://github.com/yourusername/portfolio",
   techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "GSAP", "Three.js", "Vercel"],
-  boxImage: "/projects/portfolio.png",             
+  boxImage: "/projects/Portfolio.png",             
   mobileImage: "/projects/project2.png"    
 };
 
