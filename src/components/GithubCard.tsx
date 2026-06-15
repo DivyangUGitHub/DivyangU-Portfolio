@@ -69,47 +69,16 @@ export default function GithubCard() {
     )}d ago`;
   };
 
-  useEffect(() => {
-
-    const fetchGithub =
-      async () => {
-
-      try {
-
-  const res = await fetch("/api/github");
-
-        const json =
-          await res.json();
-
-        if (json.success) {
-
-          setData(json);
-
-          setLiveTime(
-            getTimeAgo(json.time)
-          );
-        }
-
-      } catch (err) {
-
-        console.log(err);
-
-      }
-    };
-
-    fetchGithub();
-
-    const interval =
-      setInterval(() => {
-
-        fetchGithub();
-
-      }, 60000);
-
-    return () =>
-      clearInterval(interval);
-
-  }, []);
+useEffect(() => {
+  // Demo data for production - API route temporarily disabled
+  setData({
+    repo: "Divyang-portfolio",
+    message: "Latest: Portfolio deployed successfully! ✨",
+    time: new Date().toISOString(),
+    url: "https://github.com/DivyangUGitHub"
+  });
+  setLiveTime("Just now");
+}, []);
 
   // ✅ YEH FUNCTION ADD KARO - POORA CARD CLICK KARNE PAR GITHUB KHULEGA
   const handleCardClick = () => {
