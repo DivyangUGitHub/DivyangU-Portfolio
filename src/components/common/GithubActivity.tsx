@@ -1,6 +1,6 @@
 "use client";
 
-import { GitHubCalendar } from "react-github-calendar";
+import GithubHeatmap from "./GithubHeatmap";
 
 import { motion } from "framer-motion";
 
@@ -140,13 +140,7 @@ export default function GithubActivity() {
           px-5
         "
       >
-        <GitHubCalendar
-          username="DivyangUGitHub"
-          colorScheme="dark"
-          blockSize={15}
-          blockMargin={5}
-          fontSize={14}
-        />
+<GithubHeatmap />
       </motion.div>
     </section>
   );

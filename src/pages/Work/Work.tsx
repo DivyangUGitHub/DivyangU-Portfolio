@@ -1,6 +1,6 @@
 import WorkIntro from "./WorkIntro";
 import CreativeSection from "../Home/CreativeSection";
-import GithubActivity from "../../components/GithubActivity";
+import GithubActivity from "../../components/common/GithubActivity";
 import FlowSection  from "../Home/FlowSection";
 // import ProjectCard from "./ProjectCard";
 const Work = () => {
