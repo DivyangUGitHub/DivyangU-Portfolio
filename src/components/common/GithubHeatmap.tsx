@@ -38,21 +38,19 @@ export default function GithubHeatmap() {
     "May",
   ];
 
-if (!calendar) {
-  return (
-    <div className="text-white">
-      Loading...
-    </div>
-  );
-}
+  if (
+    !calendar ||
+    !calendar.weeks ||
+    !Array.isArray(calendar.weeks)
+  ) {
+    return (
+      <div className="text-center text-white">
+        Loading GitHub Activity...
+      </div>
+    );
+  }
 
-return (
-  <pre className="text-white text-xs">
-    {JSON.stringify(calendar, null, 2)}
-  </pre>
-);
-
-  const weeks = calendar.weeks ?? [];
+  const weeks = calendar.weeks;
 
   return (
     <div className="flex w-full justify-center">
@@ -70,20 +68,19 @@ return (
           </svg>
 
           <h2 className="text-lg font-semibold">
-            {calendar.totalContributions ?? 0} contributions in the last year
+            {calendar.totalContributions} contributions in the last year
           </h2>
         </div>
 
-        {/* Month Labels */}
-        <div className="mb-3 ml-10 flex gap-8 text-xs text-zinc-500">
+        {/* Months */}
+        <div className="mb-3 ml-10 flex justify-between text-xs text-zinc-500">
           {months.map((month, index) => (
             <span key={index}>{month}</span>
           ))}
         </div>
 
         <div className="flex">
-
-          {/* Day Labels */}
+          {/* Days */}
           <div className="mr-3 flex flex-col justify-between py-1 text-xs text-zinc-500">
             <span>Mon</span>
             <span>Wed</span>
@@ -97,14 +94,14 @@ return (
                 key={weekIndex}
                 className="flex flex-col gap-[3px]"
               >
-                {(week?.contributionDays ?? []).map((day: any) => (
+                {week.contributionDays.map((day: any) => (
                   <div
                     key={day.date}
                     title={`${day.contributionCount} contributions on ${day.date}`}
-                    className="h-[11px] w-[11px] rounded-[2px] transition-all duration-200 hover:scale-125"
+                    className="h-[11px] w-[11px] rounded-[2px]"
                     style={{
                       backgroundColor: getColor(
-                        day.contributionCount ?? 0
+                        day.contributionCount
                       ),
                     }}
                   />
@@ -126,6 +123,7 @@ return (
 
           <span>More</span>
         </div>
+
       </div>
     </div>
   );
