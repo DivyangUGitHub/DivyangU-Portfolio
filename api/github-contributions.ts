@@ -1,5 +1,14 @@
 export default async function handler(_req: any, res: any) {
   try {
+    const token = process.env.GITHUB_TOKEN;
+
+    if (!token) {
+      return res.status(500).json({
+        success: false,
+        message: "GITHUB_TOKEN is missing",
+      });
+    }
+
     const query = `
       query {
         viewer {
@@ -23,7 +32,7 @@ export default async function handler(_req: any, res: any) {
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ query }),
@@ -37,22 +46,35 @@ export default async function handler(_req: any, res: any) {
       JSON.stringify(data, null, 2)
     );
 
+    if (!response.ok) {
+      return res.status(response.status).json({
+        success: false,
+        message: "GitHub API request failed",
+        githubResponse: data,
+      });
+    }
+
     if (data.errors) {
       return res.status(500).json({
         success: false,
+        message: "GitHub GraphQL Error",
         errors: data.errors,
       });
     }
 
     return res.status(200).json(
-      data.data.viewer.contributionsCollection.contributionCalendar
+      data?.data?.viewer?.contributionsCollection?.contributionCalendar
     );
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    console.error("FULL ERROR:", error);
 
     return res.status(500).json({
       success: false,
-      message: "Failed to fetch contributions",
+      message: error?.message || "Failed to fetch contributions",
+      stack:
+        process.env.NODE_ENV === "development"
+          ? error?.stack
+          : undefined,
     });
   }
 }

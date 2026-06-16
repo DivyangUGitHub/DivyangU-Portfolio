@@ -6,10 +6,11 @@ export default function GithubHeatmap() {
   useEffect(() => {
     fetch("/api/github-contributions")
       .then((res) => res.json())
-      .then((data) => {
-        console.log("GitHub Data:", data);
-        setCalendar(data);
-      })
+.then((data) => {
+  console.log("GitHub Data:", data);
+  console.log("Weeks Length:", data?.weeks?.length);
+  setCalendar(data);
+})
       .catch((err) => {
         console.error("GitHub API Error:", err);
       });
@@ -24,6 +25,11 @@ export default function GithubHeatmap() {
   };
 
   const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
     "Jun",
     "Jul",
     "Aug",
@@ -31,24 +37,17 @@ export default function GithubHeatmap() {
     "Oct",
     "Nov",
     "Dec",
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
   ];
 
-  if (
-    !calendar ||
-    !calendar.weeks ||
-    !Array.isArray(calendar.weeks)
-  ) {
-    return (
-      <div className="text-center text-white">
-        Loading GitHub Activity...
-      </div>
-    );
-  }
+console.log("Calendar State:", calendar);
+
+if (!calendar) {
+  return (
+    <div className="text-white">
+      Loading...
+    </div>
+  );
+}
 
   const weeks = calendar.weeks;
 
