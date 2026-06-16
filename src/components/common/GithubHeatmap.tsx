@@ -21,21 +21,20 @@ export default function GithubHeatmap() {
     return "#39d353";
   };
 
-const months: string[] = [
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-];
+  const months = [
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+  ];
 
   if (!calendar) {
     return (
@@ -46,11 +45,11 @@ const months: string[] = [
   }
 
   return (
-    <div className="flex justify-center">
-     <div className="inline-block">
+    <div className="flex w-full justify-center">
+      <div className="rounded-xl border border-white/10 bg-[#0d1117] p-6">
 
         {/* Header */}
-        <div className="mb-6 flex items-center gap-3 text-white">
+        <div className="mb-5 flex items-center gap-3 text-white">
           <svg
             viewBox="0 0 16 16"
             width="22"
@@ -69,34 +68,29 @@ const months: string[] = [
             0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z" />
           </svg>
 
-         <h2 className="text-base font-semibold">
+          <h2 className="text-lg font-semibold">
             {calendar.totalContributions} contributions in the last year
           </h2>
         </div>
 
         {/* Month Labels */}
-<div className="ml-10 mb-3 flex text-xs text-zinc-500">
-  {months.map((month, index) => (
-    <span
-      key={index}
-      className="w-[36px] shrink-0"
-    >
-      {month}
-    </span>
-  ))}
-</div>
+        <div className="mb-3 ml-10 flex gap-8 text-xs text-zinc-500">
+          {months.map((month, index) => (
+            <span key={index}>{month}</span>
+          ))}
+        </div>
 
         <div className="flex">
 
-          {/* Day Labels */}
-          <div className="mr-3 flex flex-col  text-xs text-zinc-500">
+          {/* Days */}
+          <div className="mr-3 flex flex-col justify-between py-1 text-xs text-zinc-500">
             <span>Mon</span>
             <span>Wed</span>
             <span>Fri</span>
           </div>
 
           {/* Heatmap */}
-        <div className="inline-flex gap-[3px]">
+          <div className="inline-flex gap-[3px]">
             {calendar.weeks.map((week: any, weekIndex: number) => (
               <div
                 key={weekIndex}
@@ -108,7 +102,9 @@ const months: string[] = [
                     title={`${day.contributionCount} contributions on ${day.date}`}
                     className="h-[11px] w-[11px] rounded-[2px] transition-all duration-200 hover:scale-125"
                     style={{
-                      backgroundColor: getColor(day.contributionCount),
+                      backgroundColor: getColor(
+                        day.contributionCount
+                      ),
                     }}
                   />
                 ))}
@@ -118,7 +114,7 @@ const months: string[] = [
         </div>
 
         {/* Legend */}
-        <div className="mt-5 flex items-center gap-2">
+        <div className="mt-5 flex justify-end items-center gap-2 text-xs text-zinc-400">
           <span>Less</span>
 
           <div className="h-3 w-3 rounded-[2px] bg-[#161b22]" />
