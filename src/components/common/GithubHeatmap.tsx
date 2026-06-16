@@ -25,11 +25,6 @@ export default function GithubHeatmap() {
   };
 
   const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
     "Jun",
     "Jul",
     "Aug",
@@ -37,6 +32,12 @@ export default function GithubHeatmap() {
     "Oct",
     "Nov",
     "Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
   ];
 
 console.log("Calendar State:", calendar);
