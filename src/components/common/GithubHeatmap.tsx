@@ -21,20 +21,21 @@ export default function GithubHeatmap() {
     return "#39d353";
   };
 
-<div className="mb-3 ml-8 flex gap-10 text-xs text-zinc-500">
-  <span>Jun</span>
-  <span>Jul</span>
-  <span>Aug</span>
-  <span>Sep</span>
-  <span>Oct</span>
-  <span>Nov</span>
-  <span>Dec</span>
-  <span>Jan</span>
-  <span>Feb</span>
-  <span>Mar</span>
-  <span>Apr</span>
-  <span>May</span>
-</div>
+const months: string[] = [
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+];
 
   if (!calendar) {
     return (
@@ -46,7 +47,7 @@ export default function GithubHeatmap() {
 
   return (
     <div className="flex justify-center">
-      <div className="w-fit">
+     <div className="inline-block">
 
         {/* Header */}
         <div className="mb-6 flex items-center gap-3 text-white">
@@ -68,22 +69,27 @@ export default function GithubHeatmap() {
             0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z" />
           </svg>
 
-          <h2 className="text-lg font-semibold">
+         <h2 className="text-base font-semibold">
             {calendar.totalContributions} contributions in the last year
           </h2>
         </div>
 
         {/* Month Labels */}
-        <div className="ml-10 mb-3 flex justify-between text-xs text-zinc-500">
-          {months.map((month, index) => (
-            <span key={index}>{month}</span>
-          ))}
-        </div>
+<div className="ml-10 mb-3 flex text-xs text-zinc-500">
+  {months.map((month, index) => (
+    <span
+      key={index}
+      className="w-[36px] shrink-0"
+    >
+      {month}
+    </span>
+  ))}
+</div>
 
         <div className="flex">
 
           {/* Day Labels */}
-          <div className="mr-3 flex flex-col justify-between text-xs text-zinc-500">
+          <div className="mr-3 flex flex-col  text-xs text-zinc-500">
             <span>Mon</span>
             <span>Wed</span>
             <span>Fri</span>
