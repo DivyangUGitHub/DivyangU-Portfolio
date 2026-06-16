@@ -3,19 +3,22 @@ export default async function handler(_req: any, res: any) {
 const query = `
 query {
   viewer {
-    contributionsCollection {
+    contributionsCollection(
+      from: "2026-01-01T00:00:00Z"
+      to: "2026-12-31T23:59:59Z"
+    ) {
       contributionCalendar {
         totalContributions
         weeks {
           contributionDays {
             contributionCount
             date
-            color
           }
         }
       }
     }
   }
+}
 }
 `;
 

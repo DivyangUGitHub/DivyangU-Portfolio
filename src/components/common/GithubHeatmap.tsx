@@ -21,21 +21,20 @@ export default function GithubHeatmap() {
     return "#39d353";
   };
 
-  const months = [
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-  ];
+<div className="mb-3 ml-8 flex gap-10 text-xs text-zinc-500">
+  <span>Jun</span>
+  <span>Jul</span>
+  <span>Aug</span>
+  <span>Sep</span>
+  <span>Oct</span>
+  <span>Nov</span>
+  <span>Dec</span>
+  <span>Jan</span>
+  <span>Feb</span>
+  <span>Mar</span>
+  <span>Apr</span>
+  <span>May</span>
+</div>
 
   if (!calendar) {
     return (
@@ -46,8 +45,8 @@ export default function GithubHeatmap() {
   }
 
   return (
-    <div className="w-full flex justify-center px-4">
-      <div className="w-full max-w-6xl">
+    <div className="flex justify-center">
+      <div className="w-fit">
 
         {/* Header */}
         <div className="mb-6 flex items-center gap-3 text-white">
@@ -91,7 +90,7 @@ export default function GithubHeatmap() {
           </div>
 
           {/* Heatmap */}
-          <div className="flex gap-[3px]">
+        <div className="inline-flex gap-[3px]">
             {calendar.weeks.map((week: any, weekIndex: number) => (
               <div
                 key={weekIndex}
@@ -113,7 +112,7 @@ export default function GithubHeatmap() {
         </div>
 
         {/* Legend */}
-        <div className="mt-5 flex items-center justify-end gap-2 text-xs text-zinc-400">
+        <div className="mt-5 flex items-center gap-2">
           <span>Less</span>
 
           <div className="h-3 w-3 rounded-[2px] bg-[#161b22]" />
