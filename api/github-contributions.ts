@@ -1,26 +1,22 @@
 export default async function handler(_req: any, res: any) {
   try {
-const query = `
-query {
-  viewer {
-    contributionsCollection(
-      from: "2026-01-01T00:00:00Z"
-      to: "2026-12-31T23:59:59Z"
-    ) {
-      contributionCalendar {
-        totalContributions
-        weeks {
-          contributionDays {
-            contributionCount
-            date
+    const query = `
+      query {
+        viewer {
+          contributionsCollection {
+            contributionCalendar {
+              totalContributions
+              weeks {
+                contributionDays {
+                  contributionCount
+                  date
+                }
+              }
+            }
           }
         }
       }
-    }
-  }
-}
-}
-`;
+    `;
 
     const response = await fetch(
       "https://api.github.com/graphql",
@@ -36,10 +32,24 @@ query {
 
     const data = await response.json();
 
-return res.status(200).json(
-  data.data.viewer.contributionsCollection.contributionCalendar
-);
+    console.log(
+      "GitHub GraphQL Response:",
+      JSON.stringify(data, null, 2)
+    );
+
+    if (data.errors) {
+      return res.status(500).json({
+        success: false,
+        errors: data.errors,
+      });
+    }
+
+    return res.status(200).json(
+      data.data.viewer.contributionsCollection.contributionCalendar
+    );
   } catch (error) {
+    console.error(error);
+
     return res.status(500).json({
       success: false,
       message: "Failed to fetch contributions",
