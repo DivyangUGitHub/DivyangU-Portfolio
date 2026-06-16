@@ -303,7 +303,7 @@ const ResumeSection = () => {
                   whileTap={{
                     scale: 0.95,
                   }}
-                  href="/DivynagU.Resume.pdf"
+                  href="/DU.Resume.pdf"
                   target="_blank"
                   className="
                     flex
