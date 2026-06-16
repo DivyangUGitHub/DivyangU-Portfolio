@@ -477,18 +477,12 @@ const Footer: React.FC<FooterProps> = ({
         page: "uses",
       },
 
-      // ✅ GUESTBOOK ADD KARO
-      {
-        title: "Guestbook",
-        page: "guestbook",
-      },
 
     ].map((item) => (
 
       <button
         key={item.title}
-
-        // ✅ YAHAN (as PageType) HATA DO
+        
         onClick={() => setActivePage(item.page)}
 
         className="
