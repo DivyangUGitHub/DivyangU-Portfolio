@@ -1,16 +1,17 @@
-// src/app/api/spotify/route.ts
-import { NextResponse } from 'next/server';
+// src/pages/api/spotify.ts
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export const dynamic = 'force-dynamic';
-
-export async function GET() {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   try {
     const clientId = process.env.SPOTIFY_CLIENT_ID;
     const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
     const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
 
     if (!clientId || !clientSecret || !refreshToken) {
-      return NextResponse.json({
+      return res.status(200).json({
         success: false,
         song: "Not configured",
         artist: "Spotify"
@@ -34,7 +35,7 @@ export async function GET() {
     const tokenData = await tokenResponse.json();
     
     if (!tokenData.access_token) {
-      return NextResponse.json({
+      return res.status(200).json({
         success: false,
         song: "No song playing",
         artist: "Spotify"
@@ -48,7 +49,7 @@ export async function GET() {
     });
 
     if (playingResponse.status === 204 || playingResponse.status === 404) {
-      return NextResponse.json({
+      return res.status(200).json({
         success: false,
         song: "Nothing Playing",
         artist: "Spotify"
@@ -57,14 +58,15 @@ export async function GET() {
 
     const data = await playingResponse.json();
     
-    return NextResponse.json({
+    return res.status(200).json({
       success: true,
       song: data.item?.name || "Unknown",
       artist: data.item?.artists[0]?.name || "Unknown",
       albumImage: data.item?.album?.images[0]?.url || null,
+      url: data.item?.external_urls?.spotify || null,
     });
   } catch (error) {
-    return NextResponse.json({
+    return res.status(200).json({
       success: false,
       song: "Error loading",
       artist: "Spotify"
