@@ -1,23 +1,23 @@
 export default async function handler(_req: any, res: any) {
   try {
-    const query = `
-      query {
-        user(login: "DivyangUGitHub") {
-          contributionsCollection {
-            contributionCalendar {
-              totalContributions
-              weeks {
-                contributionDays {
-                  contributionCount
-                  date
-                  color
-                }
-              }
-            }
+const query = `
+query {
+  viewer {
+    contributionsCollection {
+      contributionCalendar {
+        totalContributions
+        weeks {
+          contributionDays {
+            contributionCount
+            date
+            color
           }
         }
       }
-    `;
+    }
+  }
+}
+`;
 
     const response = await fetch(
       "https://api.github.com/graphql",
@@ -33,9 +33,9 @@ export default async function handler(_req: any, res: any) {
 
     const data = await response.json();
 
-    return res.status(200).json(
-      data.data.user.contributionsCollection.contributionCalendar
-    );
+return res.status(200).json(
+  data.data.viewer.contributionsCollection.contributionCalendar
+);
   } catch (error) {
     return res.status(500).json({
       success: false,

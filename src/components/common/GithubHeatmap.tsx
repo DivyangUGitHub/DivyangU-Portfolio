@@ -13,6 +13,30 @@ export default function GithubHeatmap() {
       .catch(console.error);
   }, []);
 
+  const getColor = (count: number) => {
+    if (count === 0) return "#161b22";
+    if (count <= 2) return "#0e4429";
+    if (count <= 5) return "#006d32";
+    if (count <= 10) return "#26a641";
+    return "#39d353";
+  };
+
+  const months = [
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+  ];
+
   if (!calendar) {
     return (
       <div className="text-center text-white">
@@ -22,37 +46,74 @@ export default function GithubHeatmap() {
   }
 
   return (
-    <div className="w-full overflow-x-auto">
-      <div className="mx-auto min-w-max rounded-2xl border border-white/10 bg-zinc-950 p-6">
+    <div className="w-full flex justify-center px-4">
+      <div className="w-full max-w-6xl">
 
-        <h2 className="mb-6 text-2xl font-bold text-white">
-          {calendar.totalContributions} Contributions in the last year
-        </h2>
+        {/* Header */}
+        <div className="mb-6 flex items-center gap-3 text-white">
+          <svg
+            viewBox="0 0 16 16"
+            width="22"
+            height="22"
+            fill="currentColor"
+          >
+            <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38
+            0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+            -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+            .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+            0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12
+            0 0 .67-.21 2.2.82a7.65 7.65 0 012-.27c.68 0 1.36.09 2 .27
+            1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
+            .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95
+            .29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2
+            0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z" />
+          </svg>
 
-        <div className="flex gap-[3px]">
-          {calendar.weeks.map((week: any, weekIndex: number) => (
-            <div
-              key={weekIndex}
-              className="flex flex-col gap-[3px]"
-            >
-              {week.contributionDays.map((day: any) => (
-                <div
-                  key={day.date}
-                  title={`${day.contributionCount} contributions on ${day.date}`}
-                  className="h-[11px] w-[11px] rounded-[2px]"
-                  style={{
-                    backgroundColor:
-                      day.contributionCount > 0
-                        ? day.color
-                        : "#161b22",
-                  }}
-                />
-              ))}
-            </div>
+          <h2 className="text-lg font-semibold">
+            {calendar.totalContributions} contributions in the last year
+          </h2>
+        </div>
+
+        {/* Month Labels */}
+        <div className="ml-10 mb-3 flex justify-between text-xs text-zinc-500">
+          {months.map((month, index) => (
+            <span key={index}>{month}</span>
           ))}
         </div>
 
-        <div className="mt-4 flex items-center justify-end gap-2 text-xs text-zinc-400">
+        <div className="flex">
+
+          {/* Day Labels */}
+          <div className="mr-3 flex flex-col justify-between text-xs text-zinc-500">
+            <span>Mon</span>
+            <span>Wed</span>
+            <span>Fri</span>
+          </div>
+
+          {/* Heatmap */}
+          <div className="flex gap-[3px]">
+            {calendar.weeks.map((week: any, weekIndex: number) => (
+              <div
+                key={weekIndex}
+                className="flex flex-col gap-[3px]"
+              >
+                {week.contributionDays.map((day: any) => (
+                  <div
+                    key={day.date}
+                    title={`${day.contributionCount} contributions on ${day.date}`}
+                    className="h-[11px] w-[11px] rounded-[2px] transition-all duration-200 hover:scale-125"
+                    style={{
+                      backgroundColor: getColor(day.contributionCount),
+                    }}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Legend */}
+        <div className="mt-5 flex items-center justify-end gap-2 text-xs text-zinc-400">
           <span>Less</span>
 
           <div className="h-3 w-3 rounded-[2px] bg-[#161b22]" />
