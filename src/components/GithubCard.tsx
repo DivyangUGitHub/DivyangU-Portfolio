@@ -69,50 +69,41 @@ export default function GithubCard() {
     )}d ago`;
   };
 
-  useEffect(() => {
-
-    const fetchGithub =
-      async () => {
-
-      try {
-
-        const res =
-          await fetch(
-            "http://localhost:5000/api/github"
-          );
-
-        const json =
-          await res.json();
-
-        if (json.success) {
-
-          setData(json);
-
-          setLiveTime(
-            getTimeAgo(json.time)
-          );
-        }
-
-      } catch (err) {
-
-        console.log(err);
-
+useEffect(() => {
+  const fetchGithub = async () => {
+    try {
+      const res = await fetch("/api/github");
+      const json = await res.json();
+      if (json.success) {
+        setData(json);
+        setLiveTime(getTimeAgo(json.time));
+      } else {
+        // Fallback demo data
+        setData({
+          repo: "Divyang-portfolio",
+          message: "Welcome to my portfolio!",
+          time: new Date().toISOString(),
+          url: "https://github.com/DivyangUGitHub"
+        });
+        setLiveTime("Just now");
       }
-    };
+    } catch (err) {
+      console.log(err);
+      // Fallback demo data
+      setData({
+        repo: "Divyang-portfolio",
+        message: "Check out my GitHub!",
+        time: new Date().toISOString(),
+        url: "https://github.com/DivyangUGitHub"
+      });
+      setLiveTime("Just now");
+    }
+  };
 
-    fetchGithub();
-
-    const interval =
-      setInterval(() => {
-
-        fetchGithub();
-
-      }, 60000);
-
-    return () =>
-      clearInterval(interval);
-
-  }, []);
+  fetchGithub();
+  const interval = setInterval(fetchGithub, 60000);
+  return () => clearInterval(interval);
+}, []);
 
   // ✅ YEH FUNCTION ADD KARO - POORA CARD CLICK KARNE PAR GITHUB KHULEGA
   const handleCardClick = () => {
