@@ -26,7 +26,7 @@ export default function SpotifyCard() {
         const json = await res.json();
 
         if (json.success) {
-          // Currently playing a song
+         
           setData({
             isPlaying: true,
             title: json.song || "Nothing Playing",
@@ -36,7 +36,7 @@ export default function SpotifyCard() {
             isCached: json.isCached || false,
           });
         } else {
-          // Not playing anything - show last played if available
+          
           setData({
             isPlaying: false,
             title: json.song || "Nothing Playing",
@@ -86,8 +86,8 @@ export default function SpotifyCard() {
         border-white/[0.06]
         hover:border-white/50
         bg-black
-        min-h-[460px]
-        max-h-[460px]
+        min-h-[450px]
+        max-h-[450px]
         p-6
         sm:p-8
         flex
@@ -140,7 +140,7 @@ export default function SpotifyCard() {
             <span className="text-white font-bold">
               {data?.artist || "Spotify"}
             </span>
-            {/* Show cached indicator */}
+          
             {data?.isCached && (
               <span className="text-zinc-400 text-sm ml-2">(last played)</span>
             )}
@@ -148,7 +148,7 @@ export default function SpotifyCard() {
         </div>
       </div>
 
-      {/* CENTER ALBUM POSTER */}
+    
       <div className="relative z-10 flex justify-center mt-10 mb-8">
         <motion.div
           animate={{
@@ -167,7 +167,7 @@ export default function SpotifyCard() {
         </motion.div>
       </div>
 
-      {/* BOTTOM */}
+      
       <div className="relative z-10 border-t border-white/10 pt-2 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className={`w-3 h-3 rounded-full ${data?.isPlaying ? "bg-green-400 animate-pulse" : "bg-yellow-500 animate-pulse"}`} />
@@ -179,13 +179,12 @@ export default function SpotifyCard() {
                 : "Offline"}
           </p>
         </div>
-        <div className={`px-4 py-1.5 rounded-full border text-xs tracking-[2px] ${
-          data?.isPlaying 
-            ? "bg-[#1ED760]/10 border-[#1ED760]/20 text-[#1ED760]" 
-            : "bg-yellow-500/10 border-yellow-500/20 text-yellow-500"
-        }`}>
-          {data?.isPlaying ? "LIVE" : "CACHED"}
-        </div>
+      
+        {data?.isPlaying && (
+          <div className="px-4 py-1.5 rounded-full bg-[#1ED760]/10 border border-[#1ED760]/20 text-[#1ED760] text-xs tracking-[2px]">
+            LIVE
+          </div>
+        )}
       </div>
     </motion.a>
   );
