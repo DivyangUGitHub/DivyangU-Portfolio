@@ -11,6 +11,7 @@ interface SpotifyData {
   artist: string;
   albumImageUrl: string;
   songUrl: string;
+  isCached?: boolean; // New property
 }
 
 export default function SpotifyCard() {
@@ -18,7 +19,6 @@ export default function SpotifyCard() {
   const [loading, setLoading] = useState(true);
   const [hovered, setHovered] = useState(false);
 
-  // ✅ Updated useEffect with API route
   useEffect(() => {
     const fetchSpotify = async () => {
       try {
@@ -26,31 +26,35 @@ export default function SpotifyCard() {
         const json = await res.json();
 
         if (json.success) {
+          // Currently playing a song
           setData({
             isPlaying: true,
             title: json.song || "Nothing Playing",
             artist: json.artist || "Spotify",
             albumImageUrl: json.albumImage || "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f",
-            songUrl: json.url || "https://spotify.com"
+            songUrl: json.url || "https://spotify.com",
+            isCached: json.isCached || false,
           });
         } else {
+          // Not playing anything - show last played if available
           setData({
             isPlaying: false,
             title: json.song || "Nothing Playing",
             artist: json.artist || "Spotify",
-            albumImageUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f",
-            songUrl: "https://spotify.com"
+            albumImageUrl: json.albumImage || "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f",
+            songUrl: json.url || "https://spotify.com",
+            isCached: json.isCached || false,
           });
         }
       } catch (err) {
         console.log(err);
-        // Fallback demo data
         setData({
           isPlaying: false,
           title: "Nothing Playing",
           artist: "Spotify",
           albumImageUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f",
-          songUrl: "https://spotify.com"
+          songUrl: "https://spotify.com",
+          isCached: false,
         });
       } finally {
         setLoading(false);
@@ -93,7 +97,7 @@ export default function SpotifyCard() {
         duration-300
       "
     >
-      {/* BACKGROUND IMAGE */}
+      
       <motion.div
         animate={{
           scale: hovered ? 1.08 : 1,
@@ -110,7 +114,6 @@ export default function SpotifyCard() {
         <div className="absolute inset-0 bg-black/75" />
       </motion.div>
 
-      {/* TOP CONTENT */}
       <div className="relative z-10">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-4">
@@ -127,7 +130,6 @@ export default function SpotifyCard() {
           <ExternalLink className="text-zinc-500 w-5 h-5" />
         </div>
 
-        {/* SONG INFO */}
         <div className="mt-8">
           <p className="text-zinc-300 text-lg leading-relaxed max-w-[650px]">
             {loading ? "Loading..." : "I recently listened to "}
@@ -138,6 +140,10 @@ export default function SpotifyCard() {
             <span className="text-white font-bold">
               {data?.artist || "Spotify"}
             </span>
+            {/* Show cached indicator */}
+            {data?.isCached && (
+              <span className="text-zinc-400 text-sm ml-2">(last played)</span>
+            )}
           </p>
         </div>
       </div>
@@ -164,13 +170,21 @@ export default function SpotifyCard() {
       {/* BOTTOM */}
       <div className="relative z-10 border-t border-white/10 pt-2 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className={`w-3 h-3 rounded-full ${data?.isPlaying ? "bg-green-400 animate-pulse" : "bg-zinc-500"}`} />
+          <div className={`w-3 h-3 rounded-full ${data?.isPlaying ? "bg-green-400 animate-pulse" : "bg-yellow-500 animate-pulse"}`} />
           <p className="text-zinc-300 text-sm">
-            {data?.isPlaying ? "Currently Playing" : "Offline"}
+            {data?.isPlaying 
+              ? "Currently Playing" 
+              : data?.isCached 
+                ? "Last Played" 
+                : "Offline"}
           </p>
         </div>
-        <div className="px-4 py-1.5 rounded-full bg-[#1ED760]/10 border border-[#1ED760]/20 text-[#1ED760] text-xs tracking-[2px]">
-          LIVE
+        <div className={`px-4 py-1.5 rounded-full border text-xs tracking-[2px] ${
+          data?.isPlaying 
+            ? "bg-[#1ED760]/10 border-[#1ED760]/20 text-[#1ED760]" 
+            : "bg-yellow-500/10 border-yellow-500/20 text-yellow-500"
+        }`}>
+          {data?.isPlaying ? "LIVE" : "CACHED"}
         </div>
       </div>
     </motion.a>
