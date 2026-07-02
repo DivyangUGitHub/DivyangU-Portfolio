@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=cylinder&color=0:0f172a,50:6366f1,100:0f172a&height=220&section=header&text=Divyang%20Upreti&fontSize=55&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Full-Stack%20Developer%20%7C%20Creative%20Technologist&descAlignY=58&descSize=18" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=cylinder&color=0:0f172a,50:6366f1,100:0f172a&height=220&section=header&text=Divyang%20Upreti&fontSize=55&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Software%20Developer%20Engineer%20%7C%20Creative%20Technologist&descAlignY=58&descSize=18" width="100%"/>
 
 <a href="https://divyang-u-portfolio.vercel.app/">
   <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=24&duration=3000&pause=800&color=6366F1&center=true&vCenter=true&width=650&lines=Building+immersive+3D+web+experiences;Next.js+%2B+Three.js+%2B+GSAP;Performance-obsessed+%7C+Design-driven" alt="Typing SVG" />
